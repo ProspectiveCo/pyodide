@@ -10,6 +10,10 @@ source:
 requirements:
   host: 
     - numpy
+  run:
+    - distutils
+    - numpy
+    - pandas
 about:
   home: https://github.com/finos/perspective
   PyPI: https://pypi.org/project/perspective-python
