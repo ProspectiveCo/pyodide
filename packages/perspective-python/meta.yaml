@@ -7,13 +7,18 @@ source:
   # url: https://files.pythonhosted.org/packages/e5/eb/f835602e295333e86b3f38d91dfe2a7f08040870d0aae9750ac2cc6874fa/perspective-python-1.9.4.tar.gz
   path: /Users/tom/perspective/_/jupyterlite-nasty/python/perspective
   sha256: 86b481cdd4d7609160a535eaccdb5941395b00aba532e2aa8029036dafc8e45a
+build: 
+  cxxflags: -fexceptions
+  ldflags: -fexceptions 
 requirements:
   host: 
     - numpy
   run:
     - distutils
     - numpy
-    - pandas
+    # - pandas
+    - python-dateutil
+    - pytz
 about:
   home: https://github.com/finos/perspective
   PyPI: https://pypi.org/project/perspective-python
