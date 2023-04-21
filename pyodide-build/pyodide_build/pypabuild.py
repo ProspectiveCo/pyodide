@@ -233,9 +233,6 @@ def get_build_env(
 def build(
     build_env: Mapping[str, str], backend_flags: str, outdir: str | None = None
 ) -> str:
-    srcdir = Path.cwd()
-    if outdir is None:
-        outdir = str(srcdir / "dist")
     builder = _ProjectBuilder(str(srcdir))
     distribution = "wheel"
     config_settings = parse_backend_flags(backend_flags)
