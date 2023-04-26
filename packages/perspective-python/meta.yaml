@@ -1,22 +1,23 @@
 package:
   name: perspective-python
-  version: 1.9.4
+  version: 2.0.1
   top-level:
     - perspective
 source:
-  # url: https://files.pythonhosted.org/packages/e5/eb/f835602e295333e86b3f38d91dfe2a7f08040870d0aae9750ac2cc6874fa/perspective-python-1.9.4.tar.gz
+  # url: https://files.pythonhosted.org/packages/e5/eb/f835602e295333e86b3f38d91dfe2a7f08040870d0aae9750ac2cc6874fa/perspective-python-2.0.1.tar.gz
   path: /Users/tom/perspective/_/jupyterlite-nasty/python/perspective
-  sha256: 86b481cdd4d7609160a535eaccdb5941395b00aba532e2aa8029036dafc8e45a
-build: 
+  sha256: 7f8470963c506ccf89768983997a92d9c7797c199c11b41ce294ee77101004ce
+build:
   cxxflags: -fexceptions
-  ldflags: -fexceptions 
+  ldflags: -fexceptions
 requirements:
-  host: 
+  host:
     - numpy
   run:
     - distutils
+    # - future
     - numpy
-    # - pandas
+    - pandas
     - python-dateutil
     - pytz
 about:
