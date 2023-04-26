@@ -145,10 +145,9 @@ class Package(BasePackage):
                 "--force-rebuild",
             ],
             check=False,
-            # stdout=subprocess.DEVNULL,
-            # stderr=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
         )
-        print(p.args)
 
         if p.returncode != 0:
             logger.error(f"Error building {self.name}. Printing build logs.")
