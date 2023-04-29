@@ -4,8 +4,8 @@ package:
   top-level:
     - perspective
 source:
-  # url: https://files.pythonhosted.org/packages/e5/eb/f835602e295333e86b3f38d91dfe2a7f08040870d0aae9750ac2cc6874fa/perspective-python-2.0.1.tar.gz
   path: /Users/tom/perspective/_/jupyterlite-nasty/python/perspective
+  # url: https://files.pythonhosted.org/packages/e5/eb/f835602e295333e86b3f38d91dfe2a7f08040870d0aae9750ac2cc6874fa/perspective-python-2.0.1.tar.gz
   sha256: 7f8470963c506ccf89768983997a92d9c7797c199c11b41ce294ee77101004ce
 build:
   cxxflags: -fexceptions
