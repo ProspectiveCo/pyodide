@@ -1,0 +1,3 @@
+[submodule "perspective-src"]
+	path = perspective-src
+	url = git@github.com:ProspectiveCo/perspective
