@@ -15,6 +15,8 @@ jobs:
       PYVERSION: ${{ steps.get_python_version.outputs.PYVERSION }}
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: recursive
       - name: Read the Python version from Makefile.envs
         id: get_python_version
         run: |
