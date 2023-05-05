@@ -7,10 +7,29 @@ source:
   # url: https://files.pythonhosted.org/packages/e5/eb/f835602e295333e86b3f38d91dfe2a7f08040870d0aae9750ac2cc6874fa/perspective-python-2.0.1.tar.gz
   # sha256: 7f8470963c506ccf89768983997a92d9c7797c199c11b41ce294ee77101004ce
   # path: /Users/tom/perspective/_/jupyterlite-nasty/python/perspective
-  path: ../../perspective-src/python/perspective
+  path: ../../perspective-src
 build:
   cxxflags: -fexceptions
   ldflags: -fexceptions
+  # Build perspective and perspective-jupyterlab JS
+  # TODO(tom): this is broken.  Pick up here on Thursdsy
+  cross-script: |
+    pwd
+    ln -s $PYODIDE_ROOT/emsdk/emsdk .emsdk
+    npm install -g yarn
+    echo once we can host an sdist somewhere for the pyodide branch, we can 
+    echo skip running yarn and yarn build_python --setup-only
+    echo we can also just download the sdist in the source section and probably
+    echo remove the cross-script
+    yarn 
+    echo downloading sdist and extracting labextension and nbextension 
+    sdist=https://files.pythonhosted.org/packages/08/c1/ea69d50036ca9f81d158508c507a05a05a6cb9e1ab82532ea627f7e11339/perspective-python-2.0.1.tar.gz
+    curl "$sdist" | tar xzv '*/perspective/labextension' '*/perspective/nbextension'
+    mv perspective-python-*/perspective/{labextension,nbextension} .
+    rmdir perspective-python-*/perspective
+    rmdir perspective-python-*
+    yarn build_python --setup-only
+    cd python/perspective
 requirements:
   host:
     - numpy
