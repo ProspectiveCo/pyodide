@@ -4,32 +4,26 @@ package:
   top-level:
     - perspective
 source:
-  # url: https://files.pythonhosted.org/packages/e5/eb/f835602e295333e86b3f38d91dfe2a7f08040870d0aae9750ac2cc6874fa/perspective-python-2.0.1.tar.gz
+  # url: https://files.pythonhosted.org/packages/08/c1/ea69d50036ca9f81d158508c507a05a05a6cb9e1ab82532ea627f7e11339/perspective-python-2.0.1.tar.gz
   # sha256: 7f8470963c506ccf89768983997a92d9c7797c199c11b41ce294ee77101004ce
-  # path: /Users/tom/perspective/_/jupyterlite-nasty/python/perspective
-  path: ../../perspective-src
+  path: ../../perspective-src/python/perspective
 build:
   cxxflags: -fexceptions
   ldflags: -fexceptions
-  # Build perspective and perspective-jupyterlab JS
-  # TODO(tom): this is broken.  Pick up here on Thursdsy
+  # TODO: first few lines of this duplicates operations in 
+  # yarn build_python --setup
+  # maybe just run yarn (or yarn install a subset of packages), then
+  # yarn build_python --setup; then overwrite the dist dir?
   cross-script: |
+    echo $PYODIDE_ROOT
+    PATCH_ROOT=$PYODIDE_ROOT/perspective-src
     pwd
-    ln -s $PYODIDE_ROOT/emsdk/emsdk .emsdk
-    npm install -g yarn
-    echo once we can host an sdist somewhere for the pyodide branch, we can 
-    echo skip running yarn and yarn build_python --setup-only
-    echo we can also just download the sdist in the source section and probably
-    echo remove the cross-script
-    yarn 
-    echo downloading sdist and extracting labextension and nbextension 
-    sdist=https://files.pythonhosted.org/packages/08/c1/ea69d50036ca9f81d158508c507a05a05a6cb9e1ab82532ea627f7e11339/perspective-python-2.0.1.tar.gz
-    curl "$sdist" | tar xzv '*/perspective/labextension' '*/perspective/nbextension'
-    mv perspective-python-*/perspective/{labextension,nbextension} .
-    rmdir perspective-python-*/perspective
-    rmdir perspective-python-*
-    yarn build_python --setup-only
-    cd python/perspective
+    rm -rf dist/
+    mkdir dist
+    cp -rp $PATCH_ROOT/{LICENSE,README.md} dist/
+    cp -rp $PATCH_ROOT/cmake dist/
+    cp -rp $PATCH_ROOT/cpp/perspective/{CMakeLists.txt,src} dist/
+    cp -rp $PATCH_ROOT/python/perspective python/
 requirements:
   host:
     - numpy
