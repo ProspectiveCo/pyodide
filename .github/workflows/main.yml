@@ -88,6 +88,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: true
 
       - name: Cache ccache output
         uses: actions/cache@v3
