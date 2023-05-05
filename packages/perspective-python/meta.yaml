@@ -10,8 +10,7 @@ source:
 build:
   cxxflags: -fexceptions
   ldflags: -fexceptions
-  # TODO: first few lines of this duplicates operations in 
-  # yarn build_python --setup
+  # TODO: this duplicates what yarn build_python --setup does
   # maybe just run yarn (or yarn install a subset of packages), then
   # yarn build_python --setup; then overwrite the dist dir?
   cross-script: |
@@ -27,6 +26,7 @@ build:
 requirements:
   host:
     - numpy
+    - boost-cpp
   run:
     - distutils
     # - future
