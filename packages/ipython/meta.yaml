@@ -1,0 +1,13 @@
+package:
+  name: ipython
+  version: 8.13.2
+  top-level:
+    - IPython
+source:
+  url: https://files.pythonhosted.org/packages/d5/16/2161195dd2f617933f8ada5bc567eb47ddbb7c99dc16ffa3e729dd25a1a0/ipython-8.13.2-py3-none-any.whl
+  sha256: ffca270240fbd21b06b2974e14a86494d6d29290184e788275f55e0b55914926
+about:
+  home: https://ipython.org
+  PyPI: https://pypi.org/project/ipython
+  summary: "IPython: Productive Interactive Computing"
+  license: BSD-3-Clause

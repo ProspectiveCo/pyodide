@@ -29,11 +29,13 @@ requirements:
     - boost-cpp
   run:
     - distutils
+    - ipywidgets
     # - future
     - numpy
     - pandas
     - python-dateutil
     - pytz
+    - traitlets
 about:
   home: https://github.com/finos/perspective
   PyPI: https://pypi.org/project/perspective-python
